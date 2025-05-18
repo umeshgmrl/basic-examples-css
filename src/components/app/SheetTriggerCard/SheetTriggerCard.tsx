@@ -2,7 +2,6 @@
 
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { Sheet } from "@silk-hq/components";
-import Image from "next/image";
 
 import "./SheetTriggerCard.css";
 
@@ -48,14 +47,11 @@ const SheetTriggerCard = ({
     >
       <Element>
         {thumbnail && (
-          <Image
+          <img
             className="SheetTriggerCard-image"
             src={thumbnail}
-            alt={children}
+            alt={children?.toString() || ""}
             draggable="false"
-            quality={100}
-            sizes="(max-width: 615px) 85.5vw, (max-width: 899px) 49vw, 1083px"
-            loading="eager"
           />
         )}
         <div className="SheetTriggerCard-innerShadowClipper">
