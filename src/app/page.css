@@ -1,7 +1,9 @@
+body {
+  max-width: 600px;
+}
 .Home-root {
   /* INNER-LAYOUT */
   position: relative;
-  max-width: 600px;
 }
 
 .Home-main {
