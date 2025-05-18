@@ -140,5 +140,3 @@ const ExampleSheetWithKeyboard = () => {
     />
   );
 };
-
-export { ExampleSheetWithKeyboard };
