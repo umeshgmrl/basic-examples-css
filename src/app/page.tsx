@@ -15,19 +15,19 @@ const users = [
     transactions: [
       {
         amount: 1250.00,
-        type: "income",
+        type: "income" as const,
         description: "Salary Payment",
         date: "2025-03-15"
       },
       {
         amount: -80.50,
-        type: "expense",
+        type: "expense" as const,
         description: "Grocery Shopping",
         date: "2025-03-14"
       },
       {
         amount: -45.99,
-        type: "expense",
+        type: "expense" as const,
         description: "Netflix Subscription",
         date: "2025-03-13"
       }
@@ -42,19 +42,19 @@ const users = [
     transactions: [
       {
         amount: 2100.00,
-        type: "income",
+        type: "income" as const,
         description: "Monthly Salary",
         date: "2025-03-15"
       },
       {
         amount: -150.50,
-        type: "expense",
+        type: "expense" as const,
         description: "Tech Gadgets",
         date: "2025-03-13"
       },
       {
         amount: -273.00,
-        type: "expense",
+        type: "expense" as const,
         description: "Online Courses",
         date: "2025-03-10"
       }
@@ -69,19 +69,19 @@ const users = [
     transactions: [
       {
         amount: 1950.00,
-        type: "income",
+        type: "income" as const,
         description: "Monthly Salary",
         date: "2025-03-15"
       },
       {
         amount: -450.25,
-        type: "expense",
+        type: "expense" as const,
         description: "Marketing Tools",
         date: "2025-03-12"
       },
       {
         amount: -441.00,
-        type: "expense",
+        type: "expense" as const,
         description: "Client Dinner",
         date: "2025-03-09"
       }
@@ -96,19 +96,19 @@ const users = [
     transactions: [
       {
         amount: 1850.00,
-        type: "income",
+        type: "income" as const,
         description: "Monthly Salary",
         date: "2025-03-15"
       },
       {
         amount: -245.80,
-        type: "expense",
+        type: "expense" as const,
         description: "Financial Software",
         date: "2025-03-11"
       },
       {
         amount: -100.00,
-        type: "expense",
+        type: "expense" as const,
         description: "Office Supplies",
         date: "2025-03-08"
       }
