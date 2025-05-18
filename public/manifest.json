@@ -4,5 +4,9 @@
   "background_color": "#c7f59b",
   "short_name": "Expense tracker",
   "id": "expense-trakcer-bhumesh",
-  "description": "Expense tracker for Bhumesh"
+  "description": "Expense tracker for Bhumesh",
+  "icons": {
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  }
 }
