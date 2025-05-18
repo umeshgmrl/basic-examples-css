@@ -22,7 +22,7 @@
   position: fixed;
   left: 0;
   top: -1px;
-  z-index: 1; /* So it is above ParallaxPage, which overlaps it to avoid subpixel offset */
+  z-index: 1;
   width: 100%;
   height: calc(env(safe-area-inset-top) + 49px);
 }
@@ -30,7 +30,6 @@
 .Home-topBarContent {
   /* SELF-LAYOUT */
   height: 49px;
-
   /* APPEARANCE */
   border-bottom: 1px solid rgba(0, 0, 0, 0.066);
   background-color: white;
@@ -43,4 +42,55 @@
   font-size: 17.25px;
   font-weight: 620;
   color: var(--gray-9);
+}
+
+.Home-userCard {
+  padding: var(--size-6);
+  display: grid;
+  gap: var(--size-4);
+}
+
+.Home-userName {
+  font-size: var(--font-size-5);
+  font-weight: var(--font-weight-7);
+  color: var(--gray-9);
+}
+
+.Home-userRole {
+  font-size: var(--font-size-3);
+  color: var(--gray-6);
+}
+
+.Home-userStats {
+  margin-top: var(--size-4);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--size-4);
+}
+
+.Home-statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--size-3);
+  border-radius: var(--radius-3);
+  background-color: var(--gray-1);
+}
+
+.Home-statLabel {
+  font-size: var(--font-size-2);
+  color: var(--gray-6);
+}
+
+.Home-statValue {
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-6);
+}
+
+.Home-statItem.income .Home-statValue {
+  color: #22c55e;
+}
+
+.Home-statItem.expense .Home-statValue {
+  color: #ef4444;
 }

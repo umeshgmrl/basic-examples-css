@@ -1,42 +1,69 @@
 "use client";
 import React from "react";
-import { Fixed, Island } from "@silk-hq/components";
-
+import { Fixed, Island, Sheet, Scroll } from "@silk-hq/components";
+import { PageFromBottom } from "@/components/examples/PageFromBottom/ExamplePageFromBottom";
+import { SheetTriggerCard } from "@/components/app/SheetTriggerCard/SheetTriggerCard";
 import "./page.css";
-import { ExampleBottomSheet } from "@/components/examples/BottomSheet/ExampleBottomSheet";
-import { ExampleToast } from "@/components/examples/Toast/ExampleToast";
-import { ExampleSheetWithKeyboard } from "@/components/examples/SheetWithKeyboard/ExampleSheetWithKeyboard";
-import { ExampleSheetWithDetent } from "@/components/examples/SheetWithDetent/ExampleSheetWithDetent";
-import { ExampleDetachedSheet } from "@/components/examples/DetachedSheet/ExampleDetachedSheet";
-import { ExampleTopSheet } from "@/components/examples/TopSheet/ExampleTopSheet";
-import { ExampleLongSheet } from "@/components/examples/LongSheet/ExampleLongSheet";
-import { ExamplePage } from "@/components/examples/Page/ExamplePage";
-import { ExamplePageFromBottom } from "@/components/examples/PageFromBottom/ExamplePageFromBottom";
-import { ExampleSheetWithStackingData } from "@/components/examples/SheetWithStacking/ExampleSheetWithStackingData";
-import { ExampleSheetWithStacking } from "@/components/examples/SheetWithStacking/ExampleSheetWithStacking";
-import { ExampleSidebar } from "@/components/examples/Sidebar/ExampleSidebar";
-import { ExampleCard } from "@/components/examples/Card/ExampleCard";
+
+const users = [
+  {
+    name: "Emma Thompson",
+    role: "Product Manager",
+    totalExpenses: 562.74,
+    totalIncome: 1750.00,
+    color: "blue"
+  },
+  {
+    name: "Marcus Chen",
+    role: "Software Engineer",
+    totalExpenses: 423.50,
+    totalIncome: 2100.00,
+    color: "green"
+  },
+  {
+    name: "Sarah Williams",
+    role: "Marketing Director",
+    totalExpenses: 891.25,
+    totalIncome: 1950.00,
+    color: "red"
+  },
+  {
+    name: "James Wilson",
+    role: "Financial Analyst",
+    totalExpenses: 345.80,
+    totalIncome: 1850.00,
+    color: "blue"
+  }
+];
 
 export default function Home() {
   return (
     <React.StrictMode>
       <body className="Home-root">
         <main className="Home-main">
-          <ExampleBottomSheet />
-          <ExampleTopSheet />
-          <ExampleDetachedSheet />
-          <ExampleCard />
-          <ExampleSidebar />
-          <ExampleToast />
-          <ExampleSheetWithStacking data={ExampleSheetWithStackingData} />
-          <ExampleSheetWithDetent />
-          <ExampleSheetWithKeyboard />
-          <ExampleLongSheet />
-          <ExamplePage />
-          <ExamplePageFromBottom />
-
+          {users.map((user, index) => (
+            <Sheet.Root key={index} license="commercial">
+              <SheetTriggerCard color={user.color}>
+                <div className="Home-userCard">
+                  <h2 className="Home-userName">{user.name}</h2>
+                  <p className="Home-userRole">{user.role}</p>
+                  <div className="Home-userStats">
+                    <div className="Home-statItem income">
+                      <span className="Home-statLabel">Income</span>
+                      <span className="Home-statValue">${user.totalIncome.toFixed(2)}</span>
+                    </div>
+                    <div className="Home-statItem expense">
+                      <span className="Home-statLabel">Expenses</span>
+                      <span className="Home-statValue">${user.totalExpenses.toFixed(2)}</span>
+                    </div>
+                  </div>
+                </div>
+              </SheetTriggerCard>
+              <PageFromBottom />
+            </Sheet.Root>
+          ))}
           <div className="Home-topBar">
-            <div className="Home-topBarContent">Silk</div>
+            <div className="Home-topBarContent">Expense Tracker</div>
           </div>
         </main>
       </body>
