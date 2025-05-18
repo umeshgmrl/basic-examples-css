@@ -11,143 +11,14 @@ import { SheetWithKeyboard } from "./SheetWithKeyboard";
 import { SheetTriggerCard } from "@/components/app/SheetTriggerCard/SheetTriggerCard";
 import "./ExampleSheetWithKeyboard.css";
 
-const formData = {
-  name: {
-    label: "Name",
-    description: "The name displayed on the product's card.",
-    name: "name",
-    placeholder: "Classic t-shirt",
-  },
-  brand: {
-    label: "Brand",
-    description: "The brand of the product.",
-    name: "brand",
-    placeholder: "Acme",
-  },
-  type: {
-    label: "Type",
-    description: 'The type of the product (e.g. "t-shirt", "pants").',
-    name: "type",
-    placeholder: "T-shirt",
-  },
-  color1: {
-    label: "Primary color",
-    name: "color1",
-    type: "color",
-  },
-  color2: {
-    label: "Secondary color",
-    name: "color2",
-    type: "color",
-  },
-  color3: {
-    label: "Tertiary color",
-    name: "color3",
-    type: "color",
-  },
-  price: {
-    label: "Price",
-    description: "The price of the product (€).",
-    name: "price",
-    type: "number",
-    placeholder: "19",
-  },
-  description: {
-    label: "Description",
-    description: "The description that will shown on the product's page.",
-    name: "description",
-    type: "textarea",
-    placeholder:
-      "Soft and stylish t-shirt made from 100% organic cotton for all-day comfort.",
-  },
-};
-
 const defaultValues = {
-  name: "TrailBlazer Runners",
-  brand: "NatureStride",
-  type: "Footwear",
-  color1: "#d1a74c",
-  color2: "#7dd42c",
-  color3: "#ffffff",
-  price: 149,
-  description:
-    "Experience unmatched comfort and performance NatureStride's TrailBlazer Runners.",
-};
-
-const TextInputField = ({
-  data: { label, name, type = "text", description, placeholder },
-  formValues,
-  setFormValues,
-  ...restProps
-}: any) => {
-  return (
-    <div className="ExampleSheetWithKeyboard-field" {...restProps}>
-      <label htmlFor={name} className="ExampleSheetWithKeyboard-label">
-        {label}
-      </label>
-      <p className="ExampleSheetWithKeyboard-labelDescription">{description}</p>
-      <input
-        className="ExampleSheetWithKeyboard-input"
-        id={name}
-        name={name}
-        type={type}
-        {...(type === "number" ? { pattern: "\\d*" } : {})}
-        placeholder={placeholder}
-        // @ts-ignore
-        value={formValues[name]}
-        onChange={(event) =>
-          setFormValues((prevValue: any) => ({
-            ...prevValue,
-            [name]: event.target.value,
-          }))
-        }
-      />
-    </div>
-  );
-};
-
-const ColorInputField = ({
-  data: { name, type, label },
-  formValues,
-  setFormValues,
-  ...restProps
-}: any) => {
-  return (
-    <div className="ExampleSheetWithKeyboard-colorInputWrapper" {...restProps}>
-      <VisuallyHidden.Root asChild>
-        <label htmlFor={name} className="ExampleSheetWithKeyboard-label">
-          {label}
-        </label>
-      </VisuallyHidden.Root>
-      <input
-        className="ExampleSheetWithKeyboard-colorInput"
-        id={name}
-        name={name}
-        type={type}
-        // @ts-ignore
-        value={formValues[name]}
-        onChange={(event) =>
-          setFormValues((prevValue: any) => ({
-            ...prevValue,
-            [name]: event.target.value,
-          }))
-        }
-      />
-      <div
-        className="ExampleSheetWithKeyboard-colorInputReplacement"
-        // @ts-ignore
-        style={{ "--color": formValues[name] }}
-      />
-    </div>
-  );
+  amount: "100",
+  description: "Monthly subscription payment",
+  date: "2025-03-15",
 };
 
 const ExampleSheetWithKeyboard = () => {
   const largeViewport = useClientMediaQuery("(min-width: 800px)");
-
-  //
-  // States handling
-
   const [formValues, setFormValues] = useState(defaultValues);
 
   return (
@@ -165,7 +36,7 @@ const ExampleSheetWithKeyboard = () => {
               Cancel
             </Sheet.Trigger>
             <Sheet.Title className="ExampleSheetWithKeyboard-title">
-              Edit Product
+              Add Payment
             </Sheet.Title>
             <Sheet.Trigger
               className="ExampleSheetWithKeyboard-saveButton"
@@ -180,96 +51,81 @@ const ExampleSheetWithKeyboard = () => {
               scrollGestureTrap={{ yEnd: !largeViewport }}
             >
               <Scroll.Content className="ExampleSheetWithKeyboard-scrollContent">
-                <div className="ExampleSheetWithKeyboard-imageGallery">
-                  <Scroll.Root asChild>
-                    <Scroll.View
-                      className="ExampleSheetWithKeyboard-galleryScrollView"
-                      axis="x"
-                      nativeScrollbar={false}
-                    >
-                      <Scroll.Content className="ExampleSheetWithKeyboard-galleryScrollContent">
-                        {[0, 1, 2, 3].map((element) => (
-                          <div
-                            className="ExampleSheetWithKeyboard-image"
-                            key={element}
-                          />
-                        ))}
-                      </Scroll.Content>
-                    </Scroll.View>
-                  </Scroll.Root>
-                </div>
                 <div className="ExampleSheetWithKeyboard-info">
-                  <h3 className="ExampleSheetWithKeyboard-details">
-                    Product details
-                  </h3>
                   <div className="ExampleSheetWithKeyboard-form">
-                    <TextInputField
-                      data={formData.name}
-                      formValues={formValues}
-                      setFormValues={setFormValues}
-                    />
-                    <TextInputField
-                      data={formData.brand}
-                      formValues={formValues}
-                      setFormValues={setFormValues}
-                    />
-                    <TextInputField
-                      data={formData.type}
-                      formValues={formValues}
-                      setFormValues={setFormValues}
-                    />
-                    <div className="ExampleSheetWithKeyboard-field fieldType-color">
-                      <div className="ExampleSheetWithKeyboard-label">
-                        Colors
-                      </div>
-                      <p className="ExampleSheetWithKeyboard-labelDescription">
-                        The main colors of the product.
-                      </p>
-                      <div className="ExampleSheetWithKeyboard-colorInputs">
-                        <ColorInputField
-                          data={formData.color1}
-                          formValues={formValues}
-                          setFormValues={setFormValues}
-                        />
-                        <ColorInputField
-                          data={formData.color2}
-                          formValues={formValues}
-                          setFormValues={setFormValues}
-                        />
-                        <ColorInputField
-                          data={formData.color3}
-                          formValues={formValues}
-                          setFormValues={setFormValues}
-                        />
-                      </div>
-                    </div>
-                    <TextInputField
-                      data={formData.price}
-                      formValues={formValues}
-                      setFormValues={setFormValues}
-                    />
-                    <div className="ExampleSheetWithKeyboard-field fieldType-description">
+                    <div className="ExampleSheetWithKeyboard-field">
                       <label
-                        htmlFor={formData.description.name}
+                        htmlFor="amount"
                         className="ExampleSheetWithKeyboard-label"
                       >
-                        {formData.description.label}
+                        Amount
                       </label>
                       <p className="ExampleSheetWithKeyboard-labelDescription">
-                        {formData.description.description}
+                        Enter the payment amount in dollars
+                      </p>
+                      <input
+                        className="ExampleSheetWithKeyboard-input"
+                        id="amount"
+                        name="amount"
+                        type="number"
+                        pattern="\\d*"
+                        placeholder="100"
+                        value={formValues.amount}
+                        onChange={(event) =>
+                          setFormValues((prev) => ({
+                            ...prev,
+                            amount: event.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+
+                    <div className="ExampleSheetWithKeyboard-field">
+                      <label
+                        htmlFor="date"
+                        className="ExampleSheetWithKeyboard-label"
+                      >
+                        Date
+                      </label>
+                      <p className="ExampleSheetWithKeyboard-labelDescription">
+                        Select the payment date
+                      </p>
+                      <input
+                        className="ExampleSheetWithKeyboard-input"
+                        id="date"
+                        name="date"
+                        type="date"
+                        value={formValues.date}
+                        onChange={(event) =>
+                          setFormValues((prev) => ({
+                            ...prev,
+                            date: event.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+
+                    <div className="ExampleSheetWithKeyboard-field fieldType-description">
+                      <label
+                        htmlFor="description"
+                        className="ExampleSheetWithKeyboard-label"
+                      >
+                        Description
+                      </label>
+                      <p className="ExampleSheetWithKeyboard-labelDescription">
+                        Add a description for this payment
                       </p>
                       <textarea
                         className="ExampleSheetWithKeyboard-textarea"
-                        id={formData.description.name}
-                        name={formData.description.name}
-                        rows={5}
-                        placeholder={formData.description.placeholder}
-                        // @ts-ignore
-                        value={formValues[formData.description.name]}
+                        id="description"
+                        name="description"
+                        rows={3}
+                        placeholder="Enter payment description"
+                        value={formValues.description}
                         onChange={(event) =>
-                          setFormValues((prevValue) => ({
-                            ...prevValue,
-                            [formData.description.name]: event.target.value,
+                          setFormValues((prev) => ({
+                            ...prev,
+                            description: event.target.value,
                           }))
                         }
                       />
