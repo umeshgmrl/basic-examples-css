@@ -113,3 +113,5 @@ const ExamplePageFromBottom = () => {
     />
   );
 };
+
+export { ExamplePageFromBottom }
