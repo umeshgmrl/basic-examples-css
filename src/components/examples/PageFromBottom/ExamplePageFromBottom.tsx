@@ -68,7 +68,7 @@ const transactions = [
   }
 ];
 
-const ExamplePageFromBottom = () => {
+export const ExamplePageFromBottom = () => {
   return (
     <PageFromBottom
       presentTrigger={
@@ -113,5 +113,3 @@ const ExamplePageFromBottom = () => {
     />
   );
 };
-
-export { ExamplePageFromBottom }

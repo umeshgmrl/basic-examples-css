@@ -17,7 +17,7 @@ const defaultValues = {
   date: "2025-03-15",
 };
 
-const ExampleSheetWithKeyboard = () => {
+export const ExampleSheetWithKeyboard = () => {
   const largeViewport = useClientMediaQuery("(min-width: 800px)");
   const [formValues, setFormValues] = useState(defaultValues);
 
@@ -139,6 +139,4 @@ const ExampleSheetWithKeyboard = () => {
       }
     />
   );
-};
-
-export { ExampleSheetWithKeyboard }
+}
