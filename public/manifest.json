@@ -5,6 +5,7 @@
   "short_name": "Expense tracker",
   "id": "expense-trakcer-bhumesh",
   "description": "Expense tracker for Bhumesh",
+  "start_url": '/',
   "icons": {
     "48": "icon-48.png",
     "128": "icon-128.png"
