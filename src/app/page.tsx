@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Fixed, Island, Sheet, Scroll } from "@silk-hq/components";
-import { PageFromBottom } from "@/components/examples/PageFromBottom/ExamplePageFromBottom";
+import { ExamplePageFromBottom as PageFromBottom } from "@/components/examples/PageFromBottom/ExamplePageFromBottom";
 import { SheetTriggerCard } from "@/components/app/SheetTriggerCard/SheetTriggerCard";
 import "./page.css";
 
